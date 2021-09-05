@@ -1,0 +1,1 @@
+web: gunicorn Zimzo.wsgi --log-file -
