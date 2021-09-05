@@ -1,0 +1,38 @@
+{% extends 'zimzo_app/base.html' %}
+
+{% block body_block %}
+<h1>List Business</h1>
+<div class="col-sm-6">
+    {% if business_info %}
+<ol>
+    {% for each in business_info %}
+    <li>
+        <ul>
+            
+            <li>Business Name: {{each.business_name}}</li>
+            {% if each.business_registered %}
+                {% if each.business_unit_number %}
+                    <li>Business Address: {{each.business_unit_number}}/{{each.business_street_number}} {{each.business_street_name}}, {{each.business_suburb}}</li>
+                {% else %}
+                <li>Business Address: {{each.business_street_number}} {{each.business_street_name}}, {{each.business_suburb}}</li>
+                {% endif %}
+            {% else %}
+            <li>Business Address: {{each.business_suburb}}</li>
+            
+            {% endif %}
+            <li>Business Contact: {{each.business_contact}}</li>
+            <li>Business Email: {{each.business_email}}</li>
+            <li>Business Website: {{each.business_website}}</li>
+        </ul>
+       
+    </li>
+    <br/>
+
+    {% endfor %}
+</ol>
+{% endif %}
+</div>
+
+
+
+{% endblock %}

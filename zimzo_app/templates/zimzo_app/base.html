@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+</head>
+<body>
+    <!-- <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Django</a>
+      
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'index' %}">Index</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'add_business' %}">Add Business</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'list_business' %}">List Business</a>
+                </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <li class="nav-item">
+                  <a class="nav-link" href="{% url 'user_login' %}">User Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'register_users' %}">Register User</a>
+              </li>
+            </ul>
+                
+              </ul>
+            </div>
+          </nav>
+    </div> -->
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="{% url 'index' %}">Zimzo</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'index' %}">Index</a>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'add_business' %}">Add Business</a>
+        </li>
+        {% endif %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'list_business' %}">List Business</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'user_logout' %}">Logout</a>
+        </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'user_login' %}"><span class="glyphicon glyphicon-log-in"></span>User Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'register_users' %}"><span class="glyphicon glyphicon-user"></span>Register User</a>
+        </li>
+
+        {% endif %}
+        
+      </ul>
+    </div>
+  </nav>
+
+</div>
+    
+    <div class="container">
+        {% block body_block %}
+
+        {% endblock %}
+    </div>
+</body>
+</html>
