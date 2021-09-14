@@ -12,3 +12,4 @@ class BusinessModelForm(forms.ModelForm):
             'business_registered': forms.HiddenInput(),
             'business_name': forms.TextInput(attrs={'class': ''}),
         }
+
